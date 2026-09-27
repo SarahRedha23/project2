@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Book | BookShelf</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+    <%- include('../partials/navbar.ejs') %>
+
+    <main>
+
+        <div class="new-book-page">
+
+            <h1>Add a New Book</h1>
+
+            <p class="form-intro">
+                Add a new book to the BookShelf collection.
+            </p>
+
+            <form
+                action="/books"
+                method="POST"
+                enctype="multipart/form-data"
+                class="book-form"
+            >
+
+                <label for="title">Book Title</label>
+
+                <input
+                    type="text"
+                    id="title"
+                    name="title"
+                    placeholder="Enter the book title"
+                    required
+                >
+
+                <label for="author">Author</label>
+
+                <input
+                    type="text"
+                    id="author"
+                    name="author"
+                    placeholder="Enter the author's name"
+                    required
+                >
+
+                <label for="genre">Genre</label>
+
+                <input
+                    type="text"
+                    id="genre"
+                    name="genre"
+                    placeholder="e.g. Fantasy, Mystery, Romance"
+                    required
+                >
+
+                <label for="description">Description</label>
+
+                <textarea
+                    id="description"
+                    name="description"
+                    placeholder="Write a short description of the book..."
+                    required
+                ></textarea>
+
+                <label for="image">Book Cover</label>
+
+                <input
+                    type="file"
+                    id="image"
+                    name="image"
+                    accept="image/*"
+                >
+
+                <p class="image-help">
+                    Upload a JPG, JPEG, or PNG image.
+                </p>
+
+                <button type="submit">
+                    Add Book
+                </button>
+
+            </form>
+
+            <a href="/books" class="cancel-link">
+                ← Back to Books
+            </a>
+
+        </div>
+
+    </main>
+
+    <%- include('../partials/footer.ejs') %>
+
+</body>
+</html>
+
