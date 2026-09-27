@@ -11,10 +11,12 @@ const connectToDB = require('./db.js')
 // middleware imports
 const isSignedIn = require("./middleware/is-signed-in.js");
 const passUserToView = require("./middleware/pass-user-to-view.js");
-
+const toast = require('./middleware/toast')
 // routes Imports
 const authController = require("./routes/auth.routes.js");
+const bookController = require("./routes/book.routes.js");
 const indexController = require("./routes/index.routes.js");
+const reviewController = require("./routes/review.routes.js");
 
 
 // Middleware
@@ -40,8 +42,7 @@ app.use(
   })
 );
 app.use(passUserToView)
-
-
+app.use(toast)
 
 
 
@@ -53,6 +54,9 @@ app.use(passUserToView)
 // Routes go here
 app.use('/auth',authController)
 app.use('/',indexController)
+app.use('/books',bookController)
+app.use('/reviews',reviewController)
+
 
 
 
