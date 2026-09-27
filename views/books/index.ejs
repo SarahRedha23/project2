@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Books | BookShelf</title>
+
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+  <%- include('../partials/navbar.ejs') %>
+
+  <main>
+
+    <div class="books-header">
+
+      <div>
+        <h1>BookShelf</h1>
+        <h2>All Books</h2>
+      </div>
+
+      <% if (user) { %>
+
+        <a href="/books/new" class="add-book-button">
+          + Add New Book
+        </a>
+
+      <% } %>
+
+    </div>
+
+
+    <% if (books.length === 0) { %>
+
+      <p>No books have been added yet.</p>
+
+    <% } else { %>
+
+      <div class="books-grid">
+
+        <% books.forEach(book => { %>
+
+          <div class="book-card">
+
+            <% if (book.image) { %>
+
+              <img
+                src="<%= book.image %>"
+                alt="<%= book.title %> cover"
+                class="book-grid-cover"
+              >
+
+            <% } else { %>
+
+              <div class="book-no-cover">
+                No Cover
+              </div>
+
+            <% } %>
+
+            <div class="book-info">
+
+              <h2>
+                <%= book.title %>
+              </h2>
+
+              <p>
+                <strong>Author:</strong>
+                <%= book.author %>
+              </p>
+
+              <p>
+                <strong>Genre:</strong>
+                <%= book.genre %>
+              </p>
+
+              <a href="/books/<%= book._id %>" class="view-book">
+                View Book →
+              </a>
+
+            </div>
+
+          </div>
+
+        <% }) %>
+
+      </div>
+
+    <% } %>
+
+  </main>
+
+  <%- include('../partials/footer.ejs') %>
+
+</body>
+</html>
