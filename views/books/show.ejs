@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= book.title %> | BookShelf</title>
+    <link rel="stylesheet" href="/css/style.css">
+
+</head>
+
+<body>
+
+  <%- include('../partials/navbar.ejs') %>
+
+  <main>
+    
+<a href="/books" class="cancel-link">
+  <button>  ← Back to Browse Books </button>
+</a>
+    <h1><%= book.title %></h1>
+<% if (book.image) { %>
+
+    <img
+        src="<%= book.image %>"
+        alt="<%= book.title %> cover"
+        class="book-cover"
+    >
+
+<% } %>
+    <p>
+      <strong>Author:</strong>
+      <%= book.author %>
+    </p>
+
+    <p>
+      <strong>Genre:</strong>
+      <%= book.genre %>
+    </p>
+
+    <p>
+      <strong>Description:</strong>
+      <%= book.description %>
+    </p>
+
+    <% if (user && book.createdBy._id.toString() === user._id.toString()) { %>
+
+      <a href="/books/<%= book._id %>/edit"><button> Edit Book</button>
+     
+      </a>
+
+      <form
+        action="/books/<%= book._id %>?_method=DELETE"
+        method="POST"
+      >
+        <button type="submit">
+          Delete Book
+        </button>
+      </form>
+
+    <% } %>
+
+    <hr>
+
+  <h2>Reviews</h2>
+
+<% if (reviews.length > 0) { %>
+
+    <% reviews.forEach(review => { %>
+
+        <div class="review">
+
+            <p>
+                <strong>Rating:</strong>
+                <%= review.rating %>/5
+            </p>
+
+            <p>
+                <strong>Review:</strong>
+                <%= review.comment %>
+            </p>
+
+            <p>
+                <strong>Date Read:</strong>
+                <%= review.dateRead.toDateString() %>
+            </p>
+
+            <% if (review.user) { %>
+                <p>
+                    <strong>By:</strong>
+                    <%= review.user.username %>
+                </p>
+            <% } %>
+
+            <% if (user && review.user && review.user._id.toString() === user._id.toString()) { %>
+
+                <a href="/reviews/<%= review._id %>/edit">
+                    <button>Edit Review</button>
+                </a>
+
+                <form
+                    action="/reviews/<%= review._id %>?_method=DELETE"
+                    method="POST"
+                >
+                    <button type="submit">
+                        Delete Review
+                    </button>
+                </form>
+
+            <% } %>
+
+            <hr>
+
+        </div>
+
+    <% }) %>
+
+<% } else { %>
+
+    <p>No reviews yet.</p>
+
+<% } %>
+    
+
+    <% if (user) { %>
+
+    <h3>Write a Review</h3>
+
+    <form action="/reviews/<%= book._id %>" method="POST">
+
+        <label for="rating">Rating</label>
+
+        <select id="rating" name="rating" required>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+
+        <label for="comment">Comment</label>
+
+        <textarea
+            id="comment"
+            name="comment"
+            required
+        ></textarea>
+
+        <label for="dateRead">Date Read</label>
+
+        <input
+            type="date"
+            id="dateRead"
+            name="dateRead"
+            required
+        >
+
+        <button type="submit">Add Review</button>
+
+    </form>
+
+<% } else { %>
+
+    <p>
+        <a href="/auth/sign-in">Sign in</a>
+        to write a review.
+    </p>
+
+<% } %>
+
+
+  </main>
+
+  <%- include('../partials/footer.ejs') %>
+
+</body>
+</html>
