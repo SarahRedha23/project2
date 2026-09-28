@@ -1,42 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BookShelf</title>
-  <link rel="stylesheet" href="/css/style.css">
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>BookShelf</title>
+
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
 
-  <%- include('./partials/navbar') %>
+    <%- include('./partials/navbar.ejs') %>
 
-  <main>
-     <section class="hero">
+    <main class="home-page">
 
-     <div class="hero-content">
+        <section class="hero">
 
-    <h1>Welcome to BookShelf</h1>
+            <div class="hero-content">
 
-    <p>
-      Discover books, share your thoughts, and see what other readers think.
-    </p>
+                <h1>
+                    WELCOME TO<br>
+                    BOOKSHELF
+                </h1>
 
-    <a href="/books"><button>Browse Books</button></a>
+                <p>
+                    Your place to discover, review,
+                    and share great books.
+                </p>
 
-    <% if (user) { %>
+                <div class="hero-buttons">
 
-    <a href="/books/new">
-        <button>Add New Book</button>
-    </a>
+                    <a href="/books" class="hero-button">
+                        Browse Books
+                    </a>
 
-<% } %>
+                    <% if (user) { %>
 
-     </div>
-     </section>
-  </main>
+                        <a href="/books/new" class="hero-button">
+                            Add New Book
+                        </a>
 
-  <%- include('./partials/footer') %>
+                    <% } %>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Recently Added -->
+
+        <section class="recent-books">
+
+            <div class="recent-books-header">
+
+                <h2>Recently Added</h2>
+
+                <p>
+                    A few new stories to explore.
+                </p>
+
+            </div>
+
+
+            <div class="recent-books-grid">
+
+                <% books.forEach(book => { %>
+
+                    <div class="recent-book-card">
+
+                        <% if (book.image) { %>
+
+                            <img
+                                src="<%= book.image %>"
+                                alt="<%= book.title %> cover"
+                                class="recent-book-cover"
+                            >
+
+                        <% } else { %>
+
+                            <div class="recent-no-cover">
+                                No Cover
+                            </div>
+
+                        <% } %>
+
+
+                        <div class="recent-book-info">
+
+                            <h3>
+                                <%= book.title %>
+                            </h3>
+
+                            <p>
+                                <%= book.author %>
+                            </p>
+
+                            <a href="/books/<%= book._id %>">
+                                View Book →
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                <% }) %>
+
+            </div>
+
+
+            <div class="browse-all">
+
+                <a href="/books">
+                    Browse All Books →
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <%- include('./partials/footer.ejs') %>
 
 </body>
+
 </html>

@@ -1,36 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-      <link rel="stylesheet" href="/css/style.css">
-
-</head>
-<body>
-    
-
-
-
-
-
 <nav>
-    
-    <a href="/">Homepage</a>
-    <% if (user){ %>
-    <a href="/auth/sign-out">Logout</a>
 
-    <% } else{ %>
-    <a href="/auth/sign-up">Sign up</a>
-    <a href="/auth/sign-in">Login</a>
+    <div class="nav-left">
 
-    <% } %>
-    
+        <a href="/">Homepage</a>
+        <a href="/books">Browse Books</a>
+
+        <% if (user) { %>
+            <a href="/books/new">Add New Book</a>
+        <% } %>
+
+    </div>
+
+    <div class="nav-right">
+
+        <% if (user) { %>
+
+            <span class="welcome-user">
+                Hi, <%= user.username %>
+            </span>
+
+            <a href="/auth/sign-out">Logout</a>
+
+        <% } else { %>
+
+            <a href="/auth/sign-up">Sign up</a>
+            <a href="/auth/sign-in">Login</a>
+
+        <% } %>
+
+    </div>
+
 </nav>
+
 <% if (toast) { %>
     <div class="toast">
         <%= toast %>
     </div>
 <% } %>
-</body>
-</html>
