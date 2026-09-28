@@ -6,7 +6,7 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background-color: #f5f3ef;
+  background-color: #f0deca;
   color: #222;
 }
 
@@ -20,7 +20,7 @@ nav {
 }
 
 nav a {
-  color: wheat;
+  color: #f0e3d3;
   text-decoration: none;
   margin-left: 20px;
   font-weight: 500;
@@ -36,7 +36,7 @@ nav a:first-child {
   margin-left: 0;
 }
 .welcome-user {
-    color: wheat;
+    color: #f0e3d3;
     font-weight: bold;
     margin-right: 10px;
 }
@@ -68,7 +68,7 @@ a {
 }
 
 a:hover {
-  color: #3e2723;
+  color: #d0ae95;
 }
 
 /* Buttons */
@@ -113,18 +113,39 @@ button:hover {
     text-align: center;
 }
 
-.hero-content {
+.hero-title {
     color: white;
-    max-width: 700px;
-    padding: 40px;
+    margin-bottom: 25px;
+    line-height: 1;
 }
 
-.hero-content h1 {
-    color: wheat;
-    font-size: 55px;
-    margin-bottom: 15px;
+.hero-title span {
+    display: block;
+
+    color: #faecdf;
+
+    font-size: 28px;
+    font-weight: bold;
+
+    letter-spacing: 4px;
+
+    margin-bottom: 10px;
 }
 
+.hero-title strong {
+    display: block;
+
+    color:#e4c6ac;
+
+    font-size: 80px;
+    font-weight: 900;
+
+    letter-spacing: 5px;
+
+    text-shadow:
+        0 4px 10px rgba(0, 0, 0, 0.8),
+        0 2px 3px rgba(0, 0, 0, 0.6);
+}
 .hero-content p {
     font-size: 20px;
     line-height: 1.6;
@@ -481,7 +502,7 @@ footer {
 
 .cancel-link {
     display: block;
-    text-align: center;
+    text-align: right;
     margin-top: 20px;
     text-decoration: none;
     color: #6d4c41;
@@ -499,6 +520,7 @@ footer {
 
 .books-header h1 {
     margin-bottom: 5px;
+
 }
 
 .books-header h2 {
@@ -601,4 +623,26 @@ footer {
 
 .view-book:hover {
     color: #3e2723;
+}
+
+.book-actions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin: 25px 0;
+}
+
+.book-actions form {
+    background: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+.book-actions a {
+    text-decoration: none;
+}
+
+.book-actions button {
+    margin: 0;
 }
