@@ -2,12 +2,9 @@
 
     <div class="nav-left">
 
-        <a href="/">Homepage</a>
-        <a href="/books">Browse Books</a>
+        <a href="/">BookShelf</a>
+        <a href="/#recent-books">Recently Added</a>
 
-        <% if (user) { %>
-            <a href="/books/new">Add New Book</a>
-        <% } %>
 
     </div>
 
@@ -18,6 +15,7 @@
             <span class="welcome-user">
                 Hi, <%= user.username %>
             </span>
+             <a href="/reviews/my-reviews">My Reviews</a>
 
             <a href="/auth/sign-out">Logout</a>
 
