@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Reviews | BookShelf</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+    <%- include('../partials/navbar.ejs') %>
+
+    <main>
+
+        <h1>My Reviews</h1>
+
+        <% if (reviews.length === 0) { %>
+
+            <p>You haven't written any reviews yet.</p>
+
+            <a href="/books">
+                Browse Books
+            </a>
+
+        <% } else { %>
+
+            <% reviews.forEach(review => { %>
+
+                <div class="review">
+
+                   <% if (review.book) { %>
+    <h2>
+        <%= review.book.title %>
+    </h2>
+<% } else { %>
+    <h2>Book no longer available</h2>
+<% } %>
+
+                    <p>
+                        <strong>Rating:</strong>
+                        <%= review.rating %>/5
+                    </p>
+
+                    <p>
+                        <strong>Review:</strong>
+                        <%= review.comment %>
+                    </p>
+
+                   <% if (review.book) { %>
+    <a href="/books/<%= review.book._id %>">View Book</a>
+<% } %>
+
+                </div>
+
+            <% }) %>
+
+        <% } %>
+
+    </main>
+
+    <%- include('../partials/footer.ejs') %>
+
+</body>
+
+</html>
