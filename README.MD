@@ -59,7 +59,7 @@ https://project2-2-3oro.onrender.com/
 - As a guest, I should not be able to create, edit, or delete books or reviews, so that only signed-in users can modify data.
 
 ## Database Design
-<img src="erd.drawio.png">
+<img src="ERD.drawio (1).png">
 
 **Entities:**
 
