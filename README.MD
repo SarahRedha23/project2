@@ -7,6 +7,10 @@ BookShelf is a full-stack MEN (MongoDB, Express, Node) app where signed-in users
 [Deployed App](#) 
 
 ## Screenshots
+<img src="assets/homepage.png">
+<img src="assets/browse.png">
+<img src="assets/details.png">
+
 
 
 ## Technologies Used
@@ -54,7 +58,7 @@ BookShelf is a full-stack MEN (MongoDB, Express, Node) app where signed-in users
 - As a guest, I should not be able to create, edit, or delete books or reviews, so that only signed-in users can modify data.
 
 ## Database Design
-
+<img src="erd.drawio.png">
 
 **Entities:**
 
@@ -114,11 +118,10 @@ BookShelf is a full-stack MEN (MongoDB, Express, Node) app where signed-in users
 
 - Average rating
 - Search/filter
-- Book covers
 - User reading lists
 - Mark books as Want to Read / Reading / Read
 - User profile pages
 - Favorite books
 
 ## Credits
-
+cloudinary

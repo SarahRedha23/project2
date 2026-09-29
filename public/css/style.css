@@ -351,7 +351,7 @@ footer {
   color: #666;
 }
 
-/* Mobile */
+/* Mobile*/
 @media (max-width: 600px) {
   nav {
     padding: 15px 20px;
