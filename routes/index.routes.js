@@ -1,9 +1,6 @@
 const router = require("express").Router()
 const Book = require("../models/Book.js")
 
-/*router.get('/',(req,res)=>{
-    res.render('homepage.ejs')
-})*/
 
 router.get("/", async (req, res) => {
     try {
