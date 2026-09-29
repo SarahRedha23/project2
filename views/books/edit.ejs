@@ -16,62 +16,44 @@
 
 <body>
 
-    <%- include('../partials/navbar.ejs') %>
+ <%- include('../partials/navbar.ejs') %>
 
-    <main>
+ <main>
 
-        <div class="new-book-page">
-
-            <h1>Edit Book</h1>
-
-            <p class="form-intro">
-                Update the details of your book.
-            </p>
-
+     <div class="new-book-page">
+         <h1>Edit Book</h1>
+       <p class="form-intro"> Update the details of your book.</p>
             <form
                 action="/books/<%= book._id %>?_method=PUT"
                 method="POST"
-                class="book-form"
-            >
+                class="book-form">
 
-                <label for="title">
-                    Book Title
-                </label>
-
+                <label for="title">Book Title</label>
                 <input
                     type="text"
                     id="title"
                     name="title"
                     value="<%= book.title %>"
-                    required
-                >
-
+                    required>
 
                 <label for="author">
                     Author
                 </label>
-
                 <input
                     type="text"
                     id="author"
                     name="author"
                     value="<%= book.author %>"
-                    required
-                >
-
-
+                    required>
                 <label for="genre">
                     Genre
                 </label>
-
                 <input
                     type="text"
                     id="genre"
                     name="genre"
                     value="<%= book.genre %>"
-                    required
-                >
-
+                    required>
 
                 <label for="description">
                     Description

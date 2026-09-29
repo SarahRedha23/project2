@@ -4,13 +4,11 @@ const isSignedIn = require('../middleware/is-signed-in')
 const Review = require('../models/Review.js')
 const upload = require('../middleware/upload')
 
-//new book
 
 router.get('/new',isSignedIn, async(req,res)=>{
     res.render('books/new.ejs')
 })
 
-//create book 
 router.post('/', isSignedIn, upload.single('image'), async (req, res) => {
 
 const book = await Book.create({
@@ -25,12 +23,12 @@ const book = await Book.create({
 
     res.redirect('/books')
 })
-//all books
+
 router.get('/',isSignedIn, async (req,res)=>{
     const books = await Book.find()
     res.render('books/index.ejs',{books: books})
 })
-//show one book
+
 router.get("/:bookId", async (req,res)=>{
 
     const showBook = await Book.findById(req.params.bookId)
@@ -45,7 +43,7 @@ router.get("/:bookId", async (req,res)=>{
        user: req.session.user
     })
 })
-//delete book
+
 router.delete("/:bookId" ,isSignedIn, async(req,res)=>{
     const showBook = await Book.findById(req.params.bookId)
     if(!showBook.createdBy.equals(req.session.user._id)){
@@ -55,7 +53,7 @@ router.delete("/:bookId" ,isSignedIn, async(req,res)=>{
     req.session.toast = "Book deleted successfully!"
     res.redirect('/books')
 })
-//edit book
+
 router.get("/:bookId/edit",isSignedIn, async(req,res)=>{
     const foundBook = await Book.findById(req.params.bookId)
     res.render("books/edit.ejs", {book: foundBook})

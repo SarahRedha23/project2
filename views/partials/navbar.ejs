@@ -3,8 +3,19 @@
     <div class="nav-left">
 
         <a href="/">BookShelf</a>
-        <a href="/#recent-books">Recently Added</a>
+        <a href="/books">
+            Browse Books
+        </a>
 
+        <% if (user) { %>
+
+            <a href="/books/new">
+                Add Book
+            </a>
+
+        <% } %>
+        <a href="/#recent-books">Recently Added</a>
+     
 
     </div>
 

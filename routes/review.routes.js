@@ -3,7 +3,6 @@ const Review = require('../models/Review.js')
 const Book = require('../models/Book.js')
 const isSignedIn = require('../middleware/is-signed-in.js')
 
-// Create review
 router.post('/:bookId', isSignedIn, async(req,res)=>{
 
     await Review.create({
@@ -18,7 +17,6 @@ router.post('/:bookId', isSignedIn, async(req,res)=>{
     res.redirect('/books')
 })
 
-// Delete review
 router.delete('/:reviewId', isSignedIn, async (req,res)=>{
 
     const review = await Review.findById(req.params.reviewId)
@@ -33,7 +31,6 @@ router.delete('/:reviewId', isSignedIn, async (req,res)=>{
     res.redirect(`/books/${review.book}`)
 })
 
-// Show edit review page
 router.get('/:reviewId/edit', isSignedIn, async (req, res) => {
 
     const review = await Review.findById(req.params.reviewId)
@@ -45,7 +42,6 @@ router.get('/:reviewId/edit', isSignedIn, async (req, res) => {
     res.render('reviews/edit.ejs', { review })
 })
 
-// Update review
 router.put('/:reviewId', isSignedIn, async (req, res) => {
 
     const review = await Review.findById(req.params.reviewId)
@@ -64,7 +60,6 @@ router.put('/:reviewId', isSignedIn, async (req, res) => {
     res.redirect(`/books/${review.book}`)
 })
 
-// My Reviews
 router.get("/my-reviews", isSignedIn, async (req, res) => {
 
     try {
@@ -73,7 +68,6 @@ router.get("/my-reviews", isSignedIn, async (req, res) => {
             user: req.session.user._id
         }).populate("book")
 
-        // Remove reviews where the book no longer exists
         const validReviews = reviews.filter(review => review.book)
 
         res.render("reviews/my-reviews.ejs", {
