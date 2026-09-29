@@ -60,6 +60,12 @@ router.get("/:bookId/edit",isSignedIn, async(req,res)=>{
 })
 
 router.put("/:bookId" ,isSignedIn, async(req,res)=>{
+    const book = await Book.findById(req.params.bookId)
+
+    if(!book.createdBy.equals(req.session.user._id)){
+        return res.send("You are not the creator")
+    }
+
     const {title, author, genre,description}= req.body
     const updateBook = await Book.findByIdAndUpdate(req.params.bookId, {
         title,
