@@ -114,6 +114,8 @@ https://project2-2-3oro.onrender.com/
 - Only the review's owner can edit or delete it
 
 - Guests can browse but not modify data
+- User can upload book covers
+- User gets a toast after Adding, Editing and deleting.
 
 ## Future Enhancements
 
